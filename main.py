@@ -129,6 +129,16 @@ def main():
         draw.line([(bx - s, by), (bx, by - s // 2), (bx + s, by)],
                   fill=(26, 20, 48, 255), width=3)
 
+    # --- stars in the upper sky, above the name (fixed seed) ---
+    srng = random.Random(21)
+    for _ in range(60):
+        sx = srng.randint(20, W - 20)
+        sy = srng.randint(24, 80)
+        sr = srng.choice([1, 1, 2])
+        sa = srng.randint(90, 220)
+        draw.ellipse([sx - sr, sy - sr, sx + sr, sy + sr],
+                     fill=(255, 243, 214, sa))
+
     # --- the name, set large into the picture, nothing else ---
     font = ImageFont.truetype(FONT_PATH, 118)
     name = "VESPERA"
